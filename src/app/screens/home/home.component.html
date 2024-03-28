@@ -1,0 +1,13 @@
+<section class="lg:w-1/2 mx-auto text-center">
+  <h2 class="text-4xl font-bold mb-5 underline">List Of Users</h2>
+  @if(users){
+    <div class="mb-12">
+      @for(user of users;track user.id){
+        <app-user-card [user]="user"></app-user-card>
+      }
+    </div>
+    <app-paginator [totalPages]="totalPages" [currentPage]="currentPage" (paginate)="getUsers($event)"></app-paginator>
+  } @else if(error){
+    <p class="p-5 bg-red-500 text-white">{{error}}</p>
+  }
+</section>
